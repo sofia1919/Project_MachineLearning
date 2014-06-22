@@ -28,7 +28,8 @@ The goal of our project is to predict the manner in which 6 participants did the
 * Prediction Output for the 20 test cases
 
 
-```{r,eval=FALSE}
+
+```r
 setwd("C:/Users/user/Desktop/Coursera/Practical Machine Learning/Project")
 
 #Reading the training data 
@@ -60,9 +61,7 @@ modelFit1<-train(training$classe~., method="rf", trControl=trainControl(method="
 ## Random Forest 
 ##
 ## 13737 samples
-
 ##   53 predictors
-
 ##    5 classes: 'A', 'B', 'C', 'D', 'E' 
 
 ## No pre-processing
@@ -75,46 +74,32 @@ modelFit1<-train(training$classe~., method="rf", trControl=trainControl(method="
 
 ##  mtry | Accuracy | Kappa | Accuracy SD | Kappa SD
 ---------|----------|-------|-------------|----------
-
 ##   2  |   0.994   | 0.992 | 0.00225     |  0.00285 
-
 ##  27  |   0.997   | 0.996 | 0.00149     |  0.00189 
-
 ##  53  |  0.992    | 0.99  | 0.00271     |  0.00343 
 
 
 ## Accuracy was used to select the optimal model using  the largest value.
-
 ## The final value used for the model was mtry = 27. 
 
 ##modelFit1$finalModel
 
 ##Call:
-
 ##randomForest(x = x, y = y, mtry = param$mtry, allowParallel = TRUE) 
-
 ##               Type of random forest: classification
-
 ##                    Number of trees: 500
-
-##No. of variables tried at each split: 27
-##
+##No. of variables tried at each split: 27##
 ##        OOB estimate of  error rate: 0.25%
 
 ##Confusion matrix:
 
-##     A   | B   | C |   D  |  E  |class.error
------------|-----|---|------|-----|-----------
-
-##  A |3905|  0  | 0  |  0   | 1   | 0.0002560164
-
-##  B |   4| 2650|  3 |   1  | 0   |  0.0030097818
-
-##  C |   0|   5 | 2390|  1  |  0  |  0.0025041736
-
-##  D |  0 |  0  |  11 |2240 |  1  |  0.0053285968
-
-##  E |  0 |   1 |   0  |  7 |2517 | 0.0031683168
+##     A   | B   | C  |   D  |  E |class.error
+-----------|-----|----|------|----|-----------
+##  A |3905|  0  | 0  |  0   | 1  | 0.0002560164
+##  B |   4| 2650|  3 |  1   | 0  | 0.0030097818
+##  C |   0|   5 |2390|  1   | 0  | 0.0025041736
+##  D |  0 |  0  |11  |2240  | 1  | 0.0053285968
+##  E |  0 |  1  | 0  |  7   |2517| 0.0031683168
 
 #Predicting the validation set with the same model.
 predict_validation<-predict(modelFit1,validation)
@@ -127,49 +112,32 @@ predict_validation<-predict(modelFit1,validation)
 ##          Reference
 
 ##Prediction    A    B    C    D    E
-
 ##         A 1673    1    0    0    0
-
 ##         B    3 1135    1    0    0
-
 ##         C    0    2 1024    0    0
-
 ##         D    0    0    3  961    0
-
 ##         E    0    0    0    4 1078
 ##
 ##Overall Statistics
 ##                                         
-##              Accuracy : 0.9976     
-
+##              Accuracy : 0.9976 
 ##                 95% CI : (0.996, 0.9987)
-
-##    No Information Rate : 0.2848    
-
-##    P-Value [Acc > NIR] : < 2.2e-16      
+##    No Information Rate : 0.2848  
+##    P-Value [Acc > NIR] : < 2.2e-16
 ##                                         
-##                  Kappa : 0.997     
-
+##                  Kappa : 0.997 
 ## Mcnemar's Test P-Value : NA             
 ##
 ##Statistics by Class:
 ##
 ##                     Class: A Class: B Class: C Class: D Class: E
-
 ##Sensitivity            0.9982   0.9974   0.9961   0.9959   1.0000
-
 ##Specificity            0.9998   0.9992   0.9996   0.9994   0.9992
-
 ##Pos Pred Value         0.9994   0.9965   0.9981   0.9969   0.9963
-
 ##Neg Pred Value         0.9993   0.9994   0.9992   0.9992   1.0000
-
 ##Prevalence             0.2848   0.1934   0.1747   0.1640   0.1832
-
 ##Detection Rate         0.2843   0.1929   0.1740   0.1633   0.1832
-
 ##Detection Prevalence   0.2845   0.1935   0.1743   0.1638   0.1839
-
 ##Balanced Accuracy      0.9990   0.9983   0.9978   0.9976   0.9996
 
 #Calculating the in-sample error for the trained data set (1- Accuracy) and out-of-sample error for the validation set (1- Accuracy)
@@ -193,4 +161,5 @@ predicttest<-predict(modelFit,testdata)
 #predicttest
 # #   B A B A A E D B A A B C B A E E A B B B
 ```
+
 
